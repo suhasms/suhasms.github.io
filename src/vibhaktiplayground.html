@@ -293,6 +293,25 @@ bratruDetails.set("भ्रातॄणाम्", new Details("बहुवच
 bratruDetails.set("भ्रातरि", new Details("एकवचन", ["सप्तमी"]));
 bratruDetails.set("भ्रातृषु", new Details("बहुवचन", ["सप्तमी"]));
 
+var laxmiItem = Array("लक्ष्मीः", "लक्ष्म्यौ", "लक्ष्म्यः", "लक्ष्मीम्", "लक्ष्मीः", "लक्ष्म्या", "लक्ष्मीभ्याम्", "लक्ष्मीभिः", "लक्ष्म्यै", "लक्ष्मीभ्यः", "लक्ष्म्याः", "लक्ष्म्योः", "लक्ष्मीणाम्", "लक्ष्म्याम्", "लक्ष्मीषु");
+
+const laxmiDetails = new Map();
+laxmiDetails.set("लक्ष्मीः", new Details("एकवचन", ["प्रथमा"]));
+laxmiDetails.set("लक्ष्म्यौ", new Details("द्विवचन", ["प्रथमा","द्वितीया"]));
+laxmiDetails.set("लक्ष्म्यः", new Details("बहुवचन", ["प्रथमा"]));
+laxmiDetails.set("लक्ष्मीम्", new Details("एकवचन", ["द्वितीया"]));
+laxmiDetails.set("लक्ष्मीः", new Details("बहुवचन", ["द्वितीया"]));
+laxmiDetails.set("लक्ष्म्या", new Details("एकवचन", ["तृतीया"]));
+laxmiDetails.set("लक्ष्मीभ्याम्", new Details("द्विवचन", ["तृतीया", "चतुर्थी", "पंचमी"]));
+laxmiDetails.set("लक्ष्मीभिः", new Details("बहुवचन", ["तृतीया"]));
+laxmiDetails.set("लक्ष्म्यै", new Details("एकवचन", ["चतुर्थी"]));
+laxmiDetails.set("लक्ष्मीभ्यः", new Details("बहुवचन", ["चतुर्थी","पञ्चमी"]));
+laxmiDetails.set("लक्ष्म्याः", new Details("एकवचन", ["पञ्चमी","षष्ठी"]));
+laxmiDetails.set("लक्ष्म्योः", new Details("द्विवचन", ["षष्ठी","सप्तमी"]));
+laxmiDetails.set("लक्ष्मीणाम्", new Details("बहुवचन", ["षष्ठी"]));
+laxmiDetails.set("लक्ष्म्याम्", new Details("एकवचन", ["सप्तमी"]));
+laxmiDetails.set("लक्ष्मीषु", new Details("बहुवचन", ["सप्तमी"]));
+
 function convertToString(answer) {
     return "विभक्ति:&nbsp;" + answer.vibhakti + "&nbsp;&nbsp;&nbsp;&nbsp;वचन:&nbsp;" + answer.vachana; 
 }
@@ -307,7 +326,7 @@ function getRandomItem() {
     var answer = details.get(item);
     var temp = selected;
     if(selected == "random") {
-        var allPossibleSelections = Array("rama", "sita", "vana", "hari", "mati", "vishnu", "guru", "dhenu", "tadPullinga", "tadStreelingam", "tadNapumsakaLinga", "asmad", "yushmad", "bratru");
+        var allPossibleSelections = Array("rama", "sita", "vana", "hari", "mati", "vishnu", "guru", "dhenu", "tadPullinga", "tadStreelingam", "tadNapumsakaLinga", "asmad", "yushmad", "bratru", "laxmi");
         selected = allPossibleSelections[Math.floor(Math.random()*allPossibleSelections.length)];
     }
     switch(selected) {
@@ -366,7 +385,11 @@ function getRandomItem() {
       case "bratru":
         item = bratruItem[Math.floor(Math.random()*bratruItem.length)];
         answer = bratruDetails.get(item);
-        break;                                                    
+        break;     
+      case "laxmi":
+        item = laxmiItem[Math.floor(Math.random()*laxmiItem.length)];
+        answer = laxmiDetails.get(item);
+        break;                                                
       default:
         item = items[Math.floor(Math.random()*items.length)];
         answer = details.get(item);
@@ -414,6 +437,9 @@ function getRandomItem() {
         else if(bratruDetails.has(item)) {
             answer = bratruDetails.get(item);
         }
+        else if(laxmiDetails.has(item)) {
+            answer = laxmiDetails.get(item);
+        }
     }
 
     selected = temp;
@@ -442,6 +468,7 @@ function hide() {
   <option value="vana">वनम्</option>
   <option value="hari">हरिः</option>
   <option value="mati">मतिः</option>
+  <option value="laxmi">लक्ष्मी</option>
   <option value="vishnu">विष्णुः</option>
   <option value="guru">गुरुः</option>
   <option value="dhenu">धेनुः</option>

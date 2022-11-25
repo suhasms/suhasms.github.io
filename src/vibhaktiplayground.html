@@ -280,15 +280,17 @@ function convertToString(answer) {
 function updateSelected(selectedOption) {
     var selectedText = selectedOption.options[selectedOption.selectedIndex].innerHTML;
     selected = selectedOption.value;
-    var allPossibleSelections = Array("rama", "sita", "vana", "hari", "mati", "vishnu", "guru", "dhenu", "tadPullinga", "tadStreelingam", "tadNapumsakaLinga", "asmad", "yushmad");
-    if(selected == "random") {
-        selected = allPossibleSelections[Math.floor(Math.random()*allPossibleSelections.length)];
-    }
 }
 
 function getRandomItem() {
     var item = items[Math.floor(Math.random()*items.length)];
     var answer = details.get(item);
+    alert(selected)
+    var temp = selected;
+    if(selected == "random") {
+        var allPossibleSelections = Array("rama", "sita", "vana", "hari", "mati", "vishnu", "guru", "dhenu", "tadPullinga", "tadStreelingam", "tadNapumsakaLinga", "asmad", "yushmad");
+        selected = allPossibleSelections[Math.floor(Math.random()*allPossibleSelections.length)];
+    }
     switch(selected) {
       case "rama":
         item = items[Math.floor(Math.random()*items.length)];
@@ -329,11 +331,7 @@ function getRandomItem() {
       case "tadStreelingam":
         item = saaaItems[Math.floor(Math.random()*saaaItems.length)];
         answer = saaaDetails.get(item);
-        break;         
-      case "tadStreelingam":
-        item = saaaItems[Math.floor(Math.random()*saaaItems.length)];
-        answer = saaaDetails.get(item);
-        break;       
+        break;               
       case "tadNapumsakaLinga":
         item = tadNapumsakaItem[Math.floor(Math.random()*tadNapumsakaItem.length)];
         answer = tadNapumsakaDetails.get(item);
@@ -345,12 +343,54 @@ function getRandomItem() {
       case "yushmad":
         item = yushmadItem[Math.floor(Math.random()*yushmadItem.length)];
         answer = yushmadDetails.get(item);
-        break;                                                       
+        break;                                                    
       default:
         item = items[Math.floor(Math.random()*items.length)];
         answer = details.get(item);
     }
+    if(selected == "random") {
+        if(details.has(item)) {
+            answer = details.get(item);
+        }
+        else if(sitaDetails.has(item)) {
+            answer = sitaDetails.get(item);
+        }
+        else if(vanaDetails.has(item)) {
+            answer = vanaDetails.get(item);
+        }
+        else if(hariDetails.has(item)) {
+            answer = hariDetails.get(item);
+        }
+        else if(matiDetails.has(item)) {
+            answer = matiDetails.get(item);
+        }
+        else if(vishnuDetails.has(item)) {
+            answer = vishnuDetails.get(item);
+        }
+        else if(guruDetails.has(item)) {
+            answer = guruDetails.get(item);
+        }
+        else if(dhenuDetails.has(item)) {
+            answer = dhenuDetails.get(item);
+        }
+        else if(sahaDetails.has(item)) {
+            answer = sahaDetails.get(item);
+        }
+        else if(saaaDetails.has(item)) {
+            answer = saaaDetails.get(item);
+        }
+        else if(tadNapumsakaDetails.has(item)) {
+            answer = tadNapumsakaDetails.get(item);
+        }
+        else if(ahamDetails.has(item)) {
+            answer = ahamDetails.get(item);
+        }
+        else if(yushmadDetails.has(item)) {
+            answer = yushmadDetails.get(item);
+        }
+    }
 
+    selected = temp;
     hide();
     document.getElementById("display").innerHTML = item;
     document.getElementById("answerSection").innerHTML = convertToString(answer);

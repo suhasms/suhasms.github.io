@@ -273,6 +273,26 @@ yushmadDetails.set("त्वयि", new Details("एकवचन", ["सप्
 yushmadDetails.set("युवयोः", new Details("द्विवचन", ["सप्तमी"]));
 yushmadDetails.set("युष्मासु", new Details("बहुवचन", ["सप्तमी"]));
 
+
+var bratruItem = Array("भ्राता", "भ्रातरौ", "भ्रातरः", "भ्रातरम्", "भ्रातॄन्", "भ्रात्रा", "भ्रातृभ्याम्", "भ्रातृभिः", "भ्रात्रे", "भ्रातृभ्यः", "भ्रातुः", "भ्रात्रोः", "भ्रातॄणाम्", "भ्रातरि", "भ्रातृषु");
+
+const bratruDetails = new Map();
+bratruDetails.set("भ्राता", new Details("एकवचन", ["प्रथमा"]));
+bratruDetails.set("भ्रातरौ", new Details("द्विवचन", ["प्रथमा","द्वितीया"]));
+bratruDetails.set("भ्रातरः", new Details("बहुवचन", ["प्रथमा"]));
+bratruDetails.set("भ्रातरम्", new Details("एकवचन", ["द्वितीया"]));
+bratruDetails.set("भ्रातॄन्", new Details("बहुवचन", ["द्वितीया"]));
+bratruDetails.set("भ्रात्रा", new Details("एकवचन", ["तृतीया"]));
+bratruDetails.set("भ्रातृभ्याम्", new Details("द्विवचन", ["तृतीया", "चतुर्थी", "पंचमी"]));
+bratruDetails.set("भ्रातृभिः", new Details("बहुवचन", ["तृतीया"]));
+bratruDetails.set("भ्रात्रे", new Details("एकवचन", ["चतुर्थी"]));
+bratruDetails.set("भ्रातृभ्यः", new Details("बहुवचन", ["चतुर्थी","पञ्चमी"]));
+bratruDetails.set("भ्रातुः", new Details("एकवचन", ["पञ्चमी","षष्ठी"]));
+bratruDetails.set("भ्रात्रोः", new Details("द्विवचन", ["षष्ठी","सप्तमी"]));
+bratruDetails.set("भ्रातॄणाम्", new Details("बहुवचन", ["षष्ठी"]));
+bratruDetails.set("भ्रातरि", new Details("एकवचन", ["सप्तमी"]));
+bratruDetails.set("भ्रातृषु", new Details("बहुवचन", ["सप्तमी"]));
+
 function convertToString(answer) {
     return "विभक्ति:&nbsp;" + answer.vibhakti + "&nbsp;&nbsp;&nbsp;&nbsp;वचन:&nbsp;" + answer.vachana; 
 }
@@ -287,7 +307,7 @@ function getRandomItem() {
     var answer = details.get(item);
     var temp = selected;
     if(selected == "random") {
-        var allPossibleSelections = Array("rama", "sita", "vana", "hari", "mati", "vishnu", "guru", "dhenu", "tadPullinga", "tadStreelingam", "tadNapumsakaLinga", "asmad", "yushmad");
+        var allPossibleSelections = Array("rama", "sita", "vana", "hari", "mati", "vishnu", "guru", "dhenu", "tadPullinga", "tadStreelingam", "tadNapumsakaLinga", "asmad", "yushmad", "bratru");
         selected = allPossibleSelections[Math.floor(Math.random()*allPossibleSelections.length)];
     }
     switch(selected) {
@@ -342,6 +362,10 @@ function getRandomItem() {
       case "yushmad":
         item = yushmadItem[Math.floor(Math.random()*yushmadItem.length)];
         answer = yushmadDetails.get(item);
+        break;  
+      case "bratru":
+        item = bratruItem[Math.floor(Math.random()*bratruItem.length)];
+        answer = bratruDetails.get(item);
         break;                                                    
       default:
         item = items[Math.floor(Math.random()*items.length)];
@@ -387,6 +411,9 @@ function getRandomItem() {
         else if(yushmadDetails.has(item)) {
             answer = yushmadDetails.get(item);
         }
+        else if(bratruDetails.has(item)) {
+            answer = bratruDetails.get(item);
+        }
     }
 
     selected = temp;
@@ -422,7 +449,8 @@ function hide() {
   <option value="tadStreelingam">तद्  स्त्रीलिङ्गम्</option>
   <option value="tadNapumsakaLinga">तद्  नपुंसकलिङ्गम्</option>
   <option value="asmad">अस्मद्</option>  
-  <option value="yushmad">युष्मद्</option>  
+  <option value="yushmad">युष्मद्</option>
+  <option value="bratru">भ्रातृ</option>
   <option value="random">Random</option>  
 </select>
 <p style="font-size:50px;" id="display">Click on Print random button to start</p>

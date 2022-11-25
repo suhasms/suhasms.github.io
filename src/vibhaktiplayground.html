@@ -1,0 +1,394 @@
+<html lang="sa">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
+   <title>My Web Page</title>
+<script>
+class Details {
+  constructor(vachana, vibhakti) {
+    this.vachana = vachana;
+    this.vibhakti = vibhakti;
+  }
+}
+
+var selected = "rama";
+
+var items = Array("रामः", "रामौ", "रामाः", "रामम्", "रामौ", "रामान्", "रामेण", "रामाभ्याम्", "रामैः", "रामाय", "रामेभ्यः", "रामात्", "रामस्य", "रामयोः", "रामाणाम्", "रामे", "रामयोः", "रामेषु");
+
+const details = new Map();
+details.set("रामः", new Details("एकवचन", ["प्रथमा"]));
+details.set("रामौ", new Details("द्विवचन", ["प्रथमा", "द्वितीया"]));
+details.set("रामाः", new Details("बहुवचन", ["प्रथमा"]));
+details.set("रामम्", new Details("एकवचन", ["द्वितीया"]));
+details.set("रामान्", new Details("बहुवचन", ["द्वितीया"]));
+details.set("रामेण", new Details("एकवचन", ["तृतीया"]));
+details.set("रामाभ्याम्", new Details("द्विवचन", ["तृतीया", "चतुर्थी", "पंचमी"]));
+details.set("रामैः", new Details("बहुवचन", ["तृतीया"]));
+details.set("रामाय", new Details("एकवचन", ["चतुर्थी"]));
+details.set("रामेभ्यः", new Details("बहुवचन", ["चतुर्थी", "पंचमी"]));
+details.set("रामात्", new Details("एकवचन", ["पंचमी"]));
+details.set("रामस्य", new Details("एकवचन", ["षष्‍ठी"]));
+details.set("रामयोः", new Details("द्विवचन", ["षष्‍ठी", "सप्‍तमी"]));
+details.set("रामाणाम्", new Details("बहुवचन", ["षष्‍ठी"]));
+details.set("रामे", new Details("एकवचन", ["सप्‍तमी"]));
+details.set("रामेषु", new Details("बहुवचन", ["सप्‍तमी"]));
+
+
+var sitaItems = Array("सीता","सीते","सीताः","सीताम्","सीते","सीतया","सीताभ्याम्","सीताभिः","सीतायै","सीताभ्यः","सीतायाः","सीतयोः","सीतानाम्","सीतायाम्","सीतासु");
+
+const sitaDetails = new Map();
+sitaDetails.set("सीता", new Details("एकवचन", ["प्रथमा"]));
+sitaDetails.set("सीते", new Details("द्विवचन", ["प्रथमा", "द्वितीया"]));
+sitaDetails.set("सीताः", new Details("बहुवचन", ["प्रथमा", "द्वितीया"]));
+sitaDetails.set("सीताम्", new Details("एकवचन", ["द्वितीया"]));
+sitaDetails.set("सीतया", new Details("एकवचन", ["तृतीया"]));
+sitaDetails.set("सीताभ्याम्", new Details("द्विवचन", ["तृतीया", "चतुर्थी", "पंचमी"]));
+sitaDetails.set("सीताभिः", new Details("बहुवचन", ["तृतीया"]));
+sitaDetails.set("सीतायै", new Details("एकवचन", ["चतुर्थी"]));
+sitaDetails.set("सीताभ्यः", new Details("बहुवचन", ["चतुर्थी", "पंचमी"]));
+sitaDetails.set("सीतायाः", new Details("एकवचन", ["पंचमी", "षष्ठी"]));
+sitaDetails.set("सीतयोः", new Details("द्विवचन", ["षष्‍ठी", "सप्‍तमी"]));
+sitaDetails.set("सीतानाम्", new Details("बहुवचन", ["षष्‍ठी"]));
+sitaDetails.set("सीतायाम्", new Details("एकवचन", ["सप्‍तमी"]));
+sitaDetails.set("सीतासु", new Details("बहुवचन", ["सप्‍तमी"]));
+
+var vanaItems = Array("वनम्", "वने", "वनानि", "वनम्", "वनेन", "वनाभ्याम्", "वनैः", "वनाय", "वनेभ्यः", "वनात् / वनाद्", "वनस्य", "वनयोः", "वनानाम्", "वने", "वनेषु");
+
+const vanaDetails = new Map();
+vanaDetails.set("वनम्", new Details("एकवचन", ["प्रथमा"]));
+vanaDetails.set("वने", new Details("द्विवचन", ["प्रथमा", "द्वितीया"]));
+vanaDetails.set("वनानि", new Details("बहुवचन", ["प्रथमा", "द्वितीया"]));
+vanaDetails.set("वनम्", new Details("एकवचन", ["द्वितीया"]));
+vanaDetails.set("वनेन", new Details("एकवचन", ["तृतीया"]));
+vanaDetails.set("वनाभ्याम्", new Details("द्विवचन", ["तृतीया", "चतुर्थी", "पंचमी"]));
+vanaDetails.set("वनैः", new Details("बहुवचन", ["तृतीया"]));
+vanaDetails.set("वनाय", new Details("एकवचन", ["चतुर्थी"]));
+vanaDetails.set("वनेभ्यः", new Details("बहुवचन", ["चतुर्थी", "पंचमी"]));
+vanaDetails.set("वनात् / वनाद्", new Details("एकवचन", ["पंचमी"]));
+vanaDetails.set("वनस्य", new Details("एकवचन", ["षष्‍ठी"]));
+vanaDetails.set("वनयोः", new Details("द्विवचन", ["षष्‍ठी", "सप्‍तमी"]));
+vanaDetails.set("वनानाम्", new Details("बहुवचन", ["षष्‍ठी"]));
+vanaDetails.set("वने", new Details("एकवचन", ["सप्‍तमी"]));
+vanaDetails.set("वनेषु", new Details("बहुवचन", ["सप्‍तमी"]));
+
+var hariItems = Array("हरिः", "हरी", "हरयः", "हरिम्", "हरीन्", "हरिणा", "हरिभ्याम्", "हरिभिः", "हरये", "हरिभ्यः", "हरेः", "हर्योः", "हरीणाम्", "हरौ", "हरिषु");
+
+const hariDetails = new Map();
+hariDetails.set("हरिः", new Details("एकवचन", ["प्रथमा"]));
+hariDetails.set("हरी", new Details("द्विवचन", ["प्रथमा", "द्वितीया"]));
+hariDetails.set("हरयः", new Details("बहुवचन", ["प्रथमा"]));
+hariDetails.set("हरिम्", new Details("एकवचन", ["द्वितीया"]));
+hariDetails.set("हरीन्", new Details("बहुवचन", ["द्वितीया"]));
+hariDetails.set("हरिणा", new Details("एकवचन", ["तृतीया"]));
+hariDetails.set("हरिभ्याम्", new Details("द्विवचन", ["तृतीया", "चतुर्थी", "पंचमी"]));
+hariDetails.set("हरिभिः", new Details("बहुवचन", ["तृतीया"]));
+hariDetails.set("हरये", new Details("एकवचन", ["चतुर्थी"]));
+hariDetails.set("हरिभ्यः", new Details("बहुवचन", ["चतुर्थी", "पंचमी"]));
+hariDetails.set("हरेः", new Details("एकवचन", ["पंचमी", "षष्‍ठी"]));
+hariDetails.set("हर्योः", new Details("द्विवचन", ["षष्‍ठी", "सप्‍तमी"]));
+hariDetails.set("हरीणाम्", new Details("बहुवचन", ["षष्‍ठी"]));
+hariDetails.set("हरौ", new Details("एकवचन", ["सप्‍तमी"]));
+hariDetails.set("हरिषु", new Details("बहुवचन", ["सप्‍तमी"]));
+
+
+var matiItems = Array("मतिः", "मती", "मतयः", "मतिम्", "मतीः", "मत्या", "मतिभ्याम्", "मतिभिः", "मत्यै / मतये", "मतिभ्यः", "मत्याः / मतेः", "मत्योः", "मतीनाम्", "मत्याम् / मतौ", "मतिषु");
+
+const matiDetails = new Map();
+matiDetails.set("मतिः", new Details("एकवचन", ["प्रथमा"]));
+matiDetails.set("मती", new Details("द्विवचन", ["प्रथमा", "द्वितीया"]));
+matiDetails.set("मतयः", new Details("बहुवचन", ["प्रथमा"]));
+matiDetails.set("मतिम्", new Details("एकवचन", ["द्वितीया"]));
+matiDetails.set("मतीः", new Details("बहुवचन", ["द्वितीया"]));
+matiDetails.set("मत्या", new Details("एकवचन", ["तृतीया"]));
+matiDetails.set("मतिभ्याम्", new Details("द्विवचन", ["तृतीया", "चतुर्थी", "पंचमी"]));
+matiDetails.set("मतिभिः", new Details("बहुवचन", ["तृतीया"]));
+matiDetails.set("मत्यै / मतये", new Details("एकवचन", ["चतुर्थी"]));
+matiDetails.set("मतिभ्यः", new Details("बहुवचन", ["चतुर्थी", "पंचमी"]));
+matiDetails.set("मत्याः / मतेः", new Details("एकवचन", ["पंचमी", "षष्‍ठी"]));
+matiDetails.set("मत्योः", new Details("द्विवचन", ["षष्‍ठी", "सप्‍तमी"]));
+matiDetails.set("मतीनाम्", new Details("बहुवचन", ["षष्‍ठी"]));
+matiDetails.set("मत्याम् / मतौ", new Details("एकवचन", ["सप्‍तमी"]));
+matiDetails.set("मतिषु", new Details("बहुवचन", ["सप्‍तमी"]));
+
+var vishnuItems = Array("विष्णुः", "विष्णू", "विष्णवः", "विष्णुम्", "विष्णून्", "विष्णुना", "विष्णुभ्याम्", "विष्णुभिः", "विष्णवे", "विष्णुभ्यः", "विष्णोः", "विष्ण्वोः", "विष्णूनाम्", "विष्णौ", "विष्णुषु");
+
+const vishnuDetails = new Map();
+vishnuDetails.set("विष्णुः", new Details("एकवचन", ["प्रथमा"]));
+vishnuDetails.set("विष्णू", new Details("द्विवचन", ["प्रथमा", "द्वितीया"]));
+vishnuDetails.set("विष्णवः", new Details("बहुवचन", ["प्रथमा"]));
+vishnuDetails.set("विष्णुम्", new Details("एकवचन", ["द्वितीया"]));
+vishnuDetails.set("विष्णून्", new Details("बहुवचन", ["द्वितीया"]));
+vishnuDetails.set("विष्णुना", new Details("एकवचन", ["तृतीया"]));
+vishnuDetails.set("विष्णुभ्याम्", new Details("द्विवचन", ["तृतीया", "चतुर्थी", "पंचमी"]));
+vishnuDetails.set("विष्णुभिः", new Details("बहुवचन", ["तृतीया"]));
+vishnuDetails.set("विष्णवे", new Details("एकवचन", ["चतुर्थी"]));
+vishnuDetails.set("विष्णुभ्यः", new Details("बहुवचन", ["चतुर्थी", "पंचमी"]));
+vishnuDetails.set("विष्णोः", new Details("एकवचन", ["पंचमी","षष्‍ठी"]));
+vishnuDetails.set("विष्ण्वोः", new Details("द्विवचन", ["षष्‍ठी", "सप्‍तमी"]));
+vishnuDetails.set("विष्णूनाम्", new Details("बहुवचन", ["षष्‍ठी"]));
+vishnuDetails.set("विष्णौ", new Details("एकवचन", ["सप्‍तमी"]));
+vishnuDetails.set("विष्णुषु", new Details("बहुवचन", ["सप्‍तमी"]));
+
+var guruItems = Array("गुरुः", "गुरू", "गुरवः", "गुरुम्", "गुरून्", "गुरुणा", "गुरुभ्याम्", "गुरुभिः", "गुरवे", "गुरुभ्यः", "गुरोः", "गुर्वोः", "गुरूणाम्", "गुरौ", "गुरुषु");
+
+const guruDetails = new Map();
+guruDetails.set("गुरुः", new Details("एकवचन", ["प्रथमा"]));
+guruDetails.set("गुरू", new Details("द्विवचन", ["प्रथमा", "द्वितीया"]));
+guruDetails.set("गुरवः", new Details("बहुवचन", ["प्रथमा"]));
+guruDetails.set("गुरुम्", new Details("एकवचन", ["द्वितीया"]));
+guruDetails.set("गुरून्", new Details("बहुवचन", ["द्वितीया"]));
+guruDetails.set("गुरुणा", new Details("एकवचन", ["तृतीया"]));
+guruDetails.set("गुरुभ्याम्", new Details("द्विवचन", ["तृतीया", "चतुर्थी", "पंचमी"]));
+guruDetails.set("गुरुभिः", new Details("बहुवचन", ["तृतीया"]));
+guruDetails.set("गुरवे", new Details("एकवचन", ["चतुर्थी"]));
+guruDetails.set("गुरुभ्यः", new Details("बहुवचन", ["चतुर्थी", "पंचमी"]));
+guruDetails.set("गुरोः", new Details("एकवचन", ["पंचमी","षष्‍ठी"]));
+guruDetails.set("गुर्वोः", new Details("द्विवचन", ["षष्‍ठी", "सप्‍तमी"]));
+guruDetails.set("गुरूणाम्", new Details("बहुवचन", ["षष्‍ठी"]));
+guruDetails.set("गुरौ", new Details("एकवचन", ["सप्‍तमी"]));
+guruDetails.set("गुरुषु", new Details("बहुवचन", ["सप्‍तमी"]));
+
+
+var dhenuItems = Array("धेनुः", "धेनू", "धेनवः", "धेनुम्", "धेनूः", "धेन्वा", "धेनुभ्याम्", "धेनुभिः", "धेन्वै / धेनवे", "धेनुभ्यः", "धेन्वाः / धेनोः", "धेन्वोः", "धेनूनाम्", "धेन्वाम् / धेनौ", "धेनुषु");
+
+const dhenuDetails = new Map();
+dhenuDetails.set("धेनुः", new Details("एकवचन", ["प्रथमा"]));
+dhenuDetails.set("धेनू", new Details("द्विवचन", ["प्रथमा", "द्वितीया"]));
+dhenuDetails.set("धेनवः", new Details("बहुवचन", ["प्रथमा"]));
+dhenuDetails.set("धेनुम्", new Details("एकवचन", ["द्वितीया"]));
+dhenuDetails.set("धेनूः", new Details("बहुवचन", ["द्वितीया"]));
+dhenuDetails.set("धेन्वा", new Details("एकवचन", ["तृतीया"]));
+dhenuDetails.set("धेनुभ्याम्", new Details("द्विवचन", ["तृतीया", "चतुर्थी", "पंचमी"]));
+dhenuDetails.set("धेनुभिः", new Details("बहुवचन", ["तृतीया"]));
+dhenuDetails.set("धेन्वै / धेनवे", new Details("एकवचन", ["चतुर्थी"]));
+dhenuDetails.set("धेनुभ्यः", new Details("बहुवचन", ["चतुर्थी", "पंचमी"]));
+dhenuDetails.set("धेन्वाः / धेनोः", new Details("एकवचन", ["पंचमी","षष्‍ठी"]));
+dhenuDetails.set("धेन्वोः", new Details("द्विवचन", ["षष्‍ठी", "सप्‍तमी"]));
+dhenuDetails.set("धेनूनाम्", new Details("बहुवचन", ["षष्‍ठी"]));
+dhenuDetails.set("धेन्वाम् / धेनौ", new Details("एकवचन", ["सप्‍तमी"]));
+dhenuDetails.set("धेनुषु", new Details("बहुवचन", ["सप्‍तमी"]));
+
+var sahaItems = Array("सः", "तौ", "ते", "तम्", "तौ", "तान्", "तेन", "ताभ्याम्", "तैः", "तस्मै", "ताभ्याम्", "तेभ्यः", "तस्मात् / तस्माद्", "ताभ्याम्", "तेभ्यः", "तस्य", "तयोः", "तेषाम्", "तस्मिन्", "तयोः", "तेषु");
+
+const sahaDetails = new Map();
+sahaDetails.set("सः", new Details("एकवचन", ["प्रथमा"]));
+sahaDetails.set("तौ", new Details("द्विवचन", ["प्रथमा", "द्वितीया"]));
+sahaDetails.set("ते", new Details("बहुवचन", ["प्रथमा"]));
+sahaDetails.set("तम्", new Details("एकवचन", ["द्वितीया"]));
+sahaDetails.set("तान्", new Details("बहुवचन", ["द्वितीया"]));
+sahaDetails.set("तेन", new Details("एकवचन", ["तृतीया"]));
+sahaDetails.set("ताभ्याम्", new Details("द्विवचन", ["तृतीया", "चतुर्थी", "पंचमी"]));
+sahaDetails.set("तैः", new Details("बहुवचन", ["तृतीया"]));
+sahaDetails.set("तस्मै", new Details("एकवचन", ["चतुर्थी"]));
+sahaDetails.set("तेभ्यः", new Details("बहुवचन", ["चतुर्थी", "पंचमी"]));
+sahaDetails.set("तस्मात् / तस्माद्", new Details("एकवचन", ["पंचमी"]));
+sahaDetails.set("तस्य", new Details("एकवचन", ["षष्‍ठी"]));
+sahaDetails.set("तयोः", new Details("द्विवचन", ["षष्‍ठी", "सप्‍तमी"]));
+sahaDetails.set("तेषाम्", new Details("बहुवचन", ["षष्‍ठी"]));
+sahaDetails.set("तस्मिन्", new Details("एकवचन", ["सप्‍तमी"]));
+sahaDetails.set("तेषु", new Details("बहुवचन", ["सप्‍तमी"]));
+
+var saaaItems = Array("सा", "ते", "ताः", "ताम्", "तया", "ताभ्याम्", "ताभिः", "तस्यै", "ताभ्यः", "तस्याः", "तयोः", "तासाम्", "तस्याम्", "तासु");
+
+const saaaDetails = new Map();
+saaaDetails.set("सा", new Details("एकवचन", ["प्रथमा"]));
+saaaDetails.set("ते", new Details("द्विवचन", ["प्रथमा", "द्वितीया"]));
+saaaDetails.set("ताः", new Details("बहुवचन", ["प्रथमा", "द्वितीया"]));
+saaaDetails.set("ताम्", new Details("एकवचन", ["द्वितीया"]));
+saaaDetails.set("तया", new Details("एकवचन", ["तृतीया"]));
+saaaDetails.set("ताभ्याम्", new Details("द्विवचन", ["तृतीया", "चतुर्थी", "पंचमी"]));
+saaaDetails.set("ताभिः", new Details("बहुवचन", ["तृतीया"]));
+saaaDetails.set("तस्यै", new Details("एकवचन", ["चतुर्थी"]));
+saaaDetails.set("ताभ्यः", new Details("बहुवचन", ["चतुर्थी", "पंचमी"]));
+saaaDetails.set("तस्याः", new Details("एकवचन", ["पंचमी", "षष्‍ठी"]));
+saaaDetails.set("तयोः", new Details("द्विवचन", ["षष्‍ठी", "सप्‍तमी"]));
+saaaDetails.set("तासाम्", new Details("बहुवचन", ["षष्‍ठी"]));
+saaaDetails.set("तस्याम्", new Details("एकवचन", ["सप्‍तमी"]));
+saaaDetails.set("तासु", new Details("बहुवचन", ["सप्‍तमी"]));
+
+var tadNapumsakaItem = Array("तत् / तद्", "ते", "तानि", "तेन", "ताभ्याम्", "तैः", "तस्मै", "तेभ्यः", "तस्मात् / तस्माद्", "तस्य", "तयोः", "तेषाम्", "तस्मिन्", "तेषु");
+
+const tadNapumsakaDetails = new Map();
+tadNapumsakaDetails.set("तत् / तद्", new Details("एकवचन", ["प्रथमा", "द्वितीया"]));
+tadNapumsakaDetails.set("ते", new Details("द्विवचन", ["प्रथमा", "द्वितीया"]));
+tadNapumsakaDetails.set("तानि", new Details("बहुवचन", ["प्रथमा", "द्वितीया"]));
+tadNapumsakaDetails.set("तेन", new Details("एकवचन", ["तृतीया"]));
+tadNapumsakaDetails.set("ताभ्याम्", new Details("द्विवचन", ["तृतीया", "चतुर्थी", "पंचमी"]));
+tadNapumsakaDetails.set("तैः", new Details("बहुवचन", ["तृतीया"]));
+tadNapumsakaDetails.set("तस्मै", new Details("एकवचन", ["चतुर्थी"]));
+tadNapumsakaDetails.set("तेभ्यः", new Details("बहुवचन", ["चतुर्थी", "पंचमी"]));
+tadNapumsakaDetails.set("तस्मात् / तस्माद्", new Details("एकवचन", ["पंचमी"]));
+tadNapumsakaDetails.set("तस्य", new Details("एकवचन", ["षष्‍ठी"]));
+tadNapumsakaDetails.set("तयोः", new Details("द्विवचन", ["षष्‍ठी", "सप्‍तमी"]));
+tadNapumsakaDetails.set("तेषाम्", new Details("बहुवचन", ["षष्‍ठी"]));
+tadNapumsakaDetails.set("तस्मिन्", new Details("एकवचन", ["सप्‍तमी"]));
+tadNapumsakaDetails.set("तेषु", new Details("बहुवचन", ["सप्‍तमी"]));
+
+var ahamItem = Array("अहम्", "आवाम्", "वयम्", "माम् / मा", "आवाम् / नौ", "अस्मान् / नः", "मया", "आवाभ्याम्", "अस्माभिः", "मह्यम् / मे", "आवाभ्याम् / नौ", "अस्मभ्यम् / नः", "मत् / मद्", "आवाभ्याम्", "अस्मत् / अस्मद्", "मम / मे", "आवयोः / नौ", "अस्माकम् / नः", "मयि", "आवयोः", "अस्मासु");
+
+const ahamDetails = new Map();
+ahamDetails.set("अहम्", new Details("एकवचन", ["प्रथमा"]));
+ahamDetails.set("आवाम्", new Details("द्विवचन", ["प्रथमा"]));
+ahamDetails.set("वयम्", new Details("बहुवचन", ["प्रथमा"]));
+ahamDetails.set("माम् / मा", new Details("एकवचन", ["द्वितीया"]));
+ahamDetails.set("आवाम् / नौ", new Details("द्विवचन", ["द्वितीया"]));
+ahamDetails.set("अस्मान् / नः", new Details("बहुवचन", ["द्वितीया"]));
+ahamDetails.set("मया", new Details("एकवचन", ["तृतीया"]));
+ahamDetails.set("आवाभ्याम्", new Details("द्विवचन", ["तृतीया"]));
+ahamDetails.set("अस्माभिः", new Details("बहुवचन", ["तृतीया"]));
+ahamDetails.set("मह्यम् / मे", new Details("एकवचन", ["चतुर्थी"]));
+ahamDetails.set("आवाभ्याम् / नौ", new Details("द्विवचन", ["चतुर्थी"]));
+ahamDetails.set("अस्मभ्यम् / नः", new Details("बहुवचन", ["चतुर्थी"]));
+ahamDetails.set("मत् / मद्", new Details("एकवचन", ["पञ्चमी"]));
+ahamDetails.set("आवाभ्याम्", new Details("द्विवचन", ["पञ्चमी"]));
+ahamDetails.set("अस्मत् / अस्मद्", new Details("बहुवचन", ["पञ्चमी"]));
+ahamDetails.set("मम / मे", new Details("एकवचन", ["षष्ठी"]));
+ahamDetails.set("आवयोः / नौ", new Details("द्विवचन", ["षष्ठी"]));
+ahamDetails.set("अस्माकम् / नः", new Details("बहुवचन", ["षष्ठी"]));
+ahamDetails.set("मयि", new Details("एकवचन", ["सप्तमी"]));
+ahamDetails.set("आवयोः", new Details("द्विवचन", ["सप्तमी"]));
+ahamDetails.set("अस्मासु", new Details("बहुवचन", ["सप्तमी"]));
+
+var yushmadItem = Array("त्वम्", "युवाम्", "यूयम्", "त्वाम् / त्वा", "युवाम् / वाम्", "युष्मान् / वः", "त्वया", "युवाभ्याम्", "युष्माभिः", "तुभ्यम् / ते", "युवाभ्याम् / वाम्", "युष्मभ्यम् / वः", "त्वत् / त्वद्", "युवाभ्याम्", "युष्मत् / युष्मद्", "तव / ते", "युवयोः / वाम्", "युष्माकम् / वः", "त्वयि", "युवयोः", "युष्मासु");
+
+const yushmadDetails = new Map();
+yushmadDetails.set("त्वम्", new Details("एकवचन", ["प्रथमा"]));
+yushmadDetails.set("युवाम्", new Details("द्विवचन", ["प्रथमा"]));
+yushmadDetails.set("यूयम्", new Details("बहुवचन", ["प्रथमा"]));
+yushmadDetails.set("त्वाम् / त्वा", new Details("एकवचन", ["द्वितीया"]));
+yushmadDetails.set("युवाम् / वाम्", new Details("द्विवचन", ["द्वितीया"]));
+yushmadDetails.set("युष्मान् / वः", new Details("बहुवचन", ["द्वितीया"]));
+yushmadDetails.set("त्वया", new Details("एकवचन", ["तृतीया"]));
+yushmadDetails.set("युवाभ्याम्", new Details("द्विवचन", ["तृतीया"]));
+yushmadDetails.set("युष्माभिः", new Details("बहुवचन", ["तृतीया"]));
+yushmadDetails.set("तुभ्यम् / ते", new Details("एकवचन", ["चतुर्थी"]));
+yushmadDetails.set("युवाभ्याम् / वाम्", new Details("द्विवचन", ["चतुर्थी"]));
+yushmadDetails.set("युष्मभ्यम् / वः", new Details("बहुवचन", ["चतुर्थी"]));
+yushmadDetails.set("त्वत् / त्वद्", new Details("एकवचन", ["पञ्चमी"]));
+yushmadDetails.set("युवाभ्याम्", new Details("द्विवचन", ["पञ्चमी"]));
+yushmadDetails.set("युष्मत् / युष्मद्", new Details("बहुवचन", ["पञ्चमी"]));
+yushmadDetails.set("तव / ते", new Details("एकवचन", ["षष्ठी"]));
+yushmadDetails.set("युवयोः / वाम्", new Details("द्विवचन", ["षष्ठी"]));
+yushmadDetails.set("युष्माकम् / वः", new Details("बहुवचन", ["षष्ठी"]));
+yushmadDetails.set("त्वयि", new Details("एकवचन", ["सप्तमी"]));
+yushmadDetails.set("युवयोः", new Details("द्विवचन", ["सप्तमी"]));
+yushmadDetails.set("युष्मासु", new Details("बहुवचन", ["सप्तमी"]));
+
+function convertToString(answer) {
+    return "विभक्ति:&nbsp;" + answer.vibhakti + "&nbsp;&nbsp;&nbsp;&nbsp;वचन:&nbsp;" + answer.vachana; 
+}
+
+function updateSelected(selectedOption) {
+    var selectedText = selectedOption.options[selectedOption.selectedIndex].innerHTML;
+    selected = selectedOption.value;
+    var allPossibleSelections = Array("rama", "sita", "vana", "hari", "mati", "vishnu", "guru", "dhenu", "tadPullinga", "tadStreelingam", "tadNapumsakaLinga", "asmad", "yushmad");
+    if(selected == "random") {
+        selected = allPossibleSelections[Math.floor(Math.random()*allPossibleSelections.length)];
+    }
+}
+
+function getRandomItem() {
+    var item = items[Math.floor(Math.random()*items.length)];
+    var answer = details.get(item);
+    switch(selected) {
+      case "rama":
+        item = items[Math.floor(Math.random()*items.length)];
+        answer = details.get(item);
+        break;
+      case "sita":
+        item = sitaItems[Math.floor(Math.random()*sitaItems.length)];
+        answer = sitaDetails.get(item);
+        break;
+      case "vana":
+        item = vanaItems[Math.floor(Math.random()*vanaItems.length)];
+        answer = vanaDetails.get(item);
+        break;
+      case "hari":
+        item = hariItems[Math.floor(Math.random()*hariItems.length)];
+        answer = hariDetails.get(item);
+        break;   
+      case "mati":
+        item = matiItems[Math.floor(Math.random()*matiItems.length)];
+        answer = matiDetails.get(item);
+        break; 
+      case "vishnu":
+        item = vishnuItems[Math.floor(Math.random()*vishnuItems.length)];
+        answer = vishnuDetails.get(item);
+        break;    
+      case "guru":
+        item = guruItems[Math.floor(Math.random()*guruItems.length)];
+        answer = guruDetails.get(item);
+        break;   
+      case "dhenu":
+        item = dhenuItems[Math.floor(Math.random()*dhenuItems.length)];
+        answer = dhenuDetails.get(item);
+        break;    
+      case "tadPullinga":
+        item = sahaItems[Math.floor(Math.random()*sahaItems.length)];
+        answer = sahaDetails.get(item);
+        break;      
+      case "tadStreelingam":
+        item = saaaItems[Math.floor(Math.random()*saaaItems.length)];
+        answer = saaaDetails.get(item);
+        break;         
+      case "tadStreelingam":
+        item = saaaItems[Math.floor(Math.random()*saaaItems.length)];
+        answer = saaaDetails.get(item);
+        break;       
+      case "tadNapumsakaLinga":
+        item = tadNapumsakaItem[Math.floor(Math.random()*tadNapumsakaItem.length)];
+        answer = tadNapumsakaDetails.get(item);
+        break;   
+      case "asmad":
+        item = ahamItem[Math.floor(Math.random()*ahamItem.length)];
+        answer = ahamDetails.get(item);
+        break;   
+      case "yushmad":
+        item = yushmadItem[Math.floor(Math.random()*yushmadItem.length)];
+        answer = yushmadDetails.get(item);
+        break;                                                       
+      default:
+        item = items[Math.floor(Math.random()*items.length)];
+        answer = details.get(item);
+    }
+
+    hide();
+    document.getElementById("display").innerHTML = item;
+    document.getElementById("answerSection").innerHTML = convertToString(answer);
+}
+
+function showAndHide() {
+    var x = document.getElementById('answerSection');
+    x.style.display =  (x.style.display == 'none') ? x.style.display = 'block' : x.style.display = 'none';
+}
+
+function hide() {
+    var x = document.getElementById('answerSection');
+    x.style.display =  x.style.display = 'none';
+}
+</script>
+</head>
+<body>
+<label for="cars">Choose:</label>
+
+<select style="font-size:30px;"  onchange="updateSelected(this)" name="linga" id="linga">
+  <option value="rama">रामः</option>
+  <option value="sita">सीता</option>
+  <option value="vana">वनम्</option>
+  <option value="hari">हरिः</option>
+  <option value="mati">मतिः</option>
+  <option value="vishnu">विष्णुः</option>
+  <option value="guru">गुरुः</option>
+  <option value="dhenu">धेनुः</option>
+  <option value="tadPullinga">तद्  पुंलिङ्गम्</option>
+  <option value="tadStreelingam">तद्  स्त्रीलिङ्गम्</option>
+  <option value="tadNapumsakaLinga">तद्  नपुंसकलिङ्गम्</option>
+  <option value="asmad">अस्मद्</option>  
+  <option value="yushmad">युष्मद्</option>  
+  <option value="random">Random</option>  
+</select>
+<p style="font-size:50px;" id="display">Click on Print random button to start</p>
+<div style="font-size:50px;" id="answerSection" style="display:none">Answer</div>
+<button style="font-size:50px;" onclick="getRandomItem()">Print random</button>
+<button style="font-size:50px;" onclick="showAndHide()">Show/Hide the answer</button>
+</body>
+</html>

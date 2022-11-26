@@ -353,6 +353,27 @@ yetadStreelingaDetails.set("एतासाम्", new Details("बहुवच
 yetadStreelingaDetails.set("एतस्याम्", new Details("एकवचन", ["सप्तमी"]));
 yetadStreelingaDetails.set("एतासु", new Details("बहुवचन", ["सप्तमी"]));
 
+var yetadNapumsakaLingaItem = Array("एतत्/एतद्", "एते", "एतानि", "एनत्/एनद्/एतत्/एतद्", "एने/एते", "एनानि/एतानि", "एनेन/एतेन", "एताभ्याम्", "एतैः", "एतस्मै", "एतेभ्यः", "एतस्मात्/एतस्माद्", "एतस्य", "एनयोः/एतयोः", "एतेषाम्", "एतस्मिन्", "एतेषु");
+
+const yetadNapumsakalingaDetails = new Map();
+yetadNapumsakalingaDetails.set("एतत्/एतद्", new Details("एकवचन", ["प्रथमा","द्वितीया"]));
+yetadNapumsakalingaDetails.set("एते", new Details("द्विवचन", ["प्रथमा","द्वितीया"]));
+yetadNapumsakalingaDetails.set("एतानि", new Details("बहुवचन", ["प्रथमा","द्वितीया"]));
+yetadNapumsakalingaDetails.set("एनत्/एनद्/एतत्/एतद्", new Details("एकवचन", ["द्वितीया"]));
+yetadNapumsakalingaDetails.set("एने/एते", new Details("द्विवचन", ["द्वितीया"]));
+yetadNapumsakalingaDetails.set("एनानि/एतानि", new Details("बहुवचन", ["द्वितीया"]));
+yetadNapumsakalingaDetails.set("एनेन/एतेन", new Details("एकवचन", ["तृतीया"]));
+yetadNapumsakalingaDetails.set("एताभ्याम्", new Details("द्विवचन", ["तृतीया", "चतुर्थी", "पंचमी"]));
+yetadNapumsakalingaDetails.set("एतैः", new Details("बहुवचन", ["तृतीया"]));
+yetadNapumsakalingaDetails.set("एतस्मै", new Details("एकवचन", ["चतुर्थी"]));
+yetadNapumsakalingaDetails.set("एतेभ्यः", new Details("बहुवचन", ["चतुर्थी","पञ्चमी"]));
+yetadNapumsakalingaDetails.set("एतस्मात्/एतस्माद्", new Details("एकवचन", ["पञ्चमी"]));
+yetadNapumsakalingaDetails.set("एतस्य", new Details("एकवचन", ["षष्ठी"]));
+yetadNapumsakalingaDetails.set("एनयोः/एतयोः", new Details("द्विवचन", ["षष्ठी","सप्तमी"]));
+yetadNapumsakalingaDetails.set("एतेषाम्", new Details("बहुवचन", ["षष्ठी"]));
+yetadNapumsakalingaDetails.set("एतस्मिन्", new Details("एकवचन", ["सप्तमी"]));
+yetadNapumsakalingaDetails.set("एतेषु", new Details("बहुवचन", ["सप्तमी"]));
+
 function convertToString(answer) {
     return "विभक्ति:&nbsp;" + answer.vibhakti + "&nbsp;&nbsp;&nbsp;&nbsp;वचन:&nbsp;" + answer.vachana; 
 }
@@ -367,7 +388,7 @@ function getRandomItem() {
     var answer = details.get(item);
     var temp = selected;
     if(selected == "random") {
-        var allPossibleSelections = Array("rama", "sita", "vana", "hari", "mati", "vishnu", "guru", "dhenu", "tadPullinga", "tadStreelingam", "tadNapumsakaLinga", "asmad", "yushmad", "bratru", "laxmi", "yetadPullinga", "yetadStreelingam");
+        var allPossibleSelections = Array("rama", "sita", "vana", "hari", "mati", "vishnu", "guru", "dhenu", "tadPullinga", "tadStreelingam", "tadNapumsakaLinga", "asmad", "yushmad", "bratru", "laxmi", "yetadPullinga", "yetadStreelingam", "yetadNapumsakaLinga");
         selected = allPossibleSelections[Math.floor(Math.random()*allPossibleSelections.length)];
     }
     switch(selected) {
@@ -423,6 +444,10 @@ function getRandomItem() {
         item = tadNapumsakaItem[Math.floor(Math.random()*tadNapumsakaItem.length)];
         answer = tadNapumsakaDetails.get(item);
         break;   
+      case "yetadNapumsakaLinga":
+        item = yetadNapumsakaLingaItem[Math.floor(Math.random()*yetadNapumsakaLingaItem.length)];
+        answer = yetadNapumsakalingaDetails.get(item);
+        break;           
       case "asmad":
         item = ahamItem[Math.floor(Math.random()*ahamItem.length)];
         answer = ahamDetails.get(item);
@@ -495,6 +520,9 @@ function getRandomItem() {
         else if(yetadStreelingaDetails.has(item)) {
             answer = yetadStreelingaDetails.get(item);
         }
+       else if(yetadNapumsakalingaDetails.has(item)) {
+            answer = yetadNapumsakalingaDetails.get(item);
+        }        
     }
 
     selected = temp;
@@ -532,6 +560,7 @@ function hide() {
   <option value="tadStreelingam">तद्  स्त्रीलिङ्गम्</option>
   <option value="yetadStreelingam">एतद्  स्त्रीलिङ्गम्</option>
   <option value="tadNapumsakaLinga">तद्  नपुंसकलिङ्गम्</option>
+  <option value="yetadNapumsakaLinga">एतद्  नपुंसकलिङ्गम्</option>
   <option value="asmad">अस्मद्</option>  
   <option value="yushmad">युष्मद्</option>
   <option value="bratru">भ्रातृ</option>

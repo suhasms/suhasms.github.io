@@ -312,6 +312,27 @@ laxmiDetails.set("लक्ष्मीणाम्", new Details("बहुव�
 laxmiDetails.set("लक्ष्म्याम्", new Details("एकवचन", ["सप्तमी"]));
 laxmiDetails.set("लक्ष्मीषु", new Details("बहुवचन", ["सप्तमी"]));
 
+var yetadPullingaItem = Array("एषः", "एतौ", "एते", "एनम्/एतम्", "एनौ/एतौ", "एनान्/एतान्", "एनेन/एतेन", "एताभ्याम्", "एतैः", "एतस्मै", "एतेभ्यः", "एतस्मात्/एतस्माद्", "एतस्य", "एनयोः/एतयोः", "एतेषाम्", "एतस्मिन्", "एतेषु");
+
+const yetadPullingaDetails = new Map();
+yetadPullingaDetails.set("एषः", new Details("एकवचन", ["प्रथमा"]));
+yetadPullingaDetails.set("एतौ", new Details("द्विवचन", ["प्रथमा","द्वितीया"]));
+yetadPullingaDetails.set("एते", new Details("बहुवचन", ["प्रथमा"]));
+yetadPullingaDetails.set("एनम्/एतम्", new Details("एकवचन", ["द्वितीया"]));
+yetadPullingaDetails.set("एनौ/एतौ", new Details("द्विवचन", ["द्वितीया"]));
+yetadPullingaDetails.set("एनान्/एतान्", new Details("बहुवचन", ["द्वितीया"]));
+yetadPullingaDetails.set("एनेन/एतेन", new Details("एकवचन", ["तृतीया"]));
+yetadPullingaDetails.set("एताभ्याम्", new Details("द्विवचन", ["तृतीया", "चतुर्थी", "पंचमी"]));
+yetadPullingaDetails.set("एतैः", new Details("बहुवचन", ["तृतीया"]));
+yetadPullingaDetails.set("एतस्मै", new Details("एकवचन", ["चतुर्थी"]));
+yetadPullingaDetails.set("एतेभ्यः", new Details("बहुवचन", ["चतुर्थी","पञ्चमी"]));
+yetadPullingaDetails.set("एतस्मात्/एतस्माद्", new Details("एकवचन", ["पञ्चमी"]));
+yetadPullingaDetails.set("एतस्य", new Details("एकवचन", ["षष्ठी"]));
+yetadPullingaDetails.set("एनयोः/एतयोः", new Details("द्विवचन", ["षष्ठी","सप्तमी"]));
+yetadPullingaDetails.set("एतेषाम्", new Details("बहुवचन", ["षष्ठी"]));
+yetadPullingaDetails.set("एतस्मिन्", new Details("एकवचन", ["सप्तमी"]));
+yetadPullingaDetails.set("एतेषु", new Details("बहुवचन", ["सप्तमी"]));
+
 function convertToString(answer) {
     return "विभक्ति:&nbsp;" + answer.vibhakti + "&nbsp;&nbsp;&nbsp;&nbsp;वचन:&nbsp;" + answer.vachana; 
 }
@@ -326,7 +347,7 @@ function getRandomItem() {
     var answer = details.get(item);
     var temp = selected;
     if(selected == "random") {
-        var allPossibleSelections = Array("rama", "sita", "vana", "hari", "mati", "vishnu", "guru", "dhenu", "tadPullinga", "tadStreelingam", "tadNapumsakaLinga", "asmad", "yushmad", "bratru", "laxmi");
+        var allPossibleSelections = Array("rama", "sita", "vana", "hari", "mati", "vishnu", "guru", "dhenu", "tadPullinga", "tadStreelingam", "tadNapumsakaLinga", "asmad", "yushmad", "bratru", "laxmi", "yetadPullinga");
         selected = allPossibleSelections[Math.floor(Math.random()*allPossibleSelections.length)];
     }
     switch(selected) {
@@ -365,7 +386,11 @@ function getRandomItem() {
       case "tadPullinga":
         item = sahaItems[Math.floor(Math.random()*sahaItems.length)];
         answer = sahaDetails.get(item);
-        break;      
+        break;     
+      case "yetadPullinga":
+        item = yetadPullingaItem[Math.floor(Math.random()*yetadPullingaItem.length)];
+        answer = yetadPullingaDetails.get(item);
+        break;          
       case "tadStreelingam":
         item = saaaItems[Math.floor(Math.random()*saaaItems.length)];
         answer = saaaDetails.get(item);
@@ -440,6 +465,9 @@ function getRandomItem() {
         else if(laxmiDetails.has(item)) {
             answer = laxmiDetails.get(item);
         }
+        else if(yetadPullingaDetails.has(item)) {
+            answer = yetadPullingaDetails.get(item);
+        }
     }
 
     selected = temp;
@@ -473,6 +501,7 @@ function hide() {
   <option value="guru">गुरुः</option>
   <option value="dhenu">धेनुः</option>
   <option value="tadPullinga">तद्  पुंलिङ्गम्</option>
+  <option value="yetadPullinga">एतद्  पुंलिङ्गम्</option>
   <option value="tadStreelingam">तद्  स्त्रीलिङ्गम्</option>
   <option value="tadNapumsakaLinga">तद्  नपुंसकलिङ्गम्</option>
   <option value="asmad">अस्मद्</option>  

@@ -393,6 +393,25 @@ bhavatPullingaDetails.set("भवताम्", new Details("बहुवचन"
 bhavatPullingaDetails.set("भवति", new Details("एकवचन", ["सप्तमी"]));
 bhavatPullingaDetails.set("भवत्सु", new Details("बहुवचन", ["सप्तमी"]));
 
+var bhavatStreeLingaLingaItem = Array("भवती", "भवत्यौ", "भवत्यः", "भवतीम्", "भवतीः", "भवत्या", "भवतीभ्याम्", "भवतीभिः", "भवत्यै", "भवतीभ्यः", "भवत्याः", "भवत्योः", "भवतीनाम्", "भवत्याम्", "भवतीषु");
+
+const bhavatStreelingaDetails = new Map();
+bhavatStreelingaDetails.set("भवती", new Details("एकवचन", ["प्रथमा"]));
+bhavatStreelingaDetails.set("भवत्यौ", new Details("द्विवचन", ["प्रथमा","द्वितीया"]));
+bhavatStreelingaDetails.set("भवत्यः", new Details("बहुवचन", ["प्रथमा"]));
+bhavatStreelingaDetails.set("भवतीम्", new Details("एकवचन", ["द्वितीया"]));
+bhavatStreelingaDetails.set("भवतीः", new Details("बहुवचन", ["द्वितीया"]));
+bhavatStreelingaDetails.set("भवत्या", new Details("एकवचन", ["तृतीया"]));
+bhavatStreelingaDetails.set("भवतीभ्याम्", new Details("द्विवचन", ["तृतीया", "चतुर्थी", "पंचमी"]));
+bhavatStreelingaDetails.set("भवतीभिः", new Details("बहुवचन", ["तृतीया"]));
+bhavatStreelingaDetails.set("भवत्यै", new Details("एकवचन", ["चतुर्थी"]));
+bhavatStreelingaDetails.set("भवतीभ्यः", new Details("बहुवचन", ["चतुर्थी","पञ्चमी"]));
+bhavatStreelingaDetails.set("भवत्याः", new Details("एकवचन", ["पञ्चमी", "षष्ठी"]));
+bhavatStreelingaDetails.set("भवत्योः", new Details("द्विवचन", ["षष्ठी","सप्तमी"]));
+bhavatStreelingaDetails.set("भवतीनाम्", new Details("बहुवचन", ["षष्ठी"]));
+bhavatStreelingaDetails.set("भवत्याम्", new Details("एकवचन", ["सप्तमी"]));
+bhavatStreelingaDetails.set("भवतीषु", new Details("बहुवचन", ["सप्तमी"]));
+
 function convertToString(answer) {
     return "विभक्ति:&nbsp;" + answer.vibhakti + "&nbsp;&nbsp;&nbsp;&nbsp;वचन:&nbsp;" + answer.vachana; 
 }
@@ -408,7 +427,7 @@ function getRandomItem() {
     var temp = selected;
     if(selected == "random") {
         var allPossibleSelections = Array("rama", "sita", "vana", "hari", "mati", "vishnu", "guru", "dhenu", "tadPullinga", "tadStreelingam", "tadNapumsakaLinga", "asmad", "yushmad", "bratru", "laxmi", "yetadPullinga", "yetadStreelingam", "yetadNapumsakaLinga",
-        "bhavatPullinga");
+        "bhavatPullinga", "bhavatStreelinga");
         selected = allPossibleSelections[Math.floor(Math.random()*allPossibleSelections.length)];
     }
     switch(selected) {
@@ -487,7 +506,11 @@ function getRandomItem() {
       case "bhavatPullinga":
         item = bhavatPullingaLingaItem[Math.floor(Math.random()*bhavatPullingaLingaItem.length)];
         answer = bhavatPullingaDetails.get(item);
-        break;                                                    
+        break;      
+      case "bhavatStreelinga":
+        item = bhavatStreeLingaLingaItem[Math.floor(Math.random()*bhavatStreeLingaLingaItem.length)];
+        answer = bhavatStreelingaDetails.get(item);
+        break;                                                
       default:
         item = items[Math.floor(Math.random()*items.length)];
         answer = details.get(item);
@@ -550,6 +573,9 @@ function getRandomItem() {
        else if(bhavatPullingaDetails.has(item)) {
             answer = bhavatPullingaDetails.get(item);
         }    
+       else if(bhavatStreelingaDetails.has(item)) {
+            answer = bhavatStreelingaDetails.get(item);
+        }    
     }
 
     selected = temp;
@@ -592,6 +618,7 @@ function hide() {
   <option value="yushmad">युष्मद्</option>
   <option value="bratru">भ्रातृ</option>
   <option value="bhavatPullinga">भवत् पुंलिङ्गम्</option>
+  <option value="bhavatStreelinga">भवत् स्त्रीलिङ्गम्</option>
   <option value="random">Random</option>  
 </select>
 <p style="font-size:50px;" id="display">Click on Print random button to start</p>

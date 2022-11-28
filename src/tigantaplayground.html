@@ -1,0 +1,85 @@
+<html lang="sa">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
+   <title>Tiganta Page</title>
+<script>
+
+class Detail {
+  constructor(lakara, values) {
+    this.lakara = lakara;
+    this.values = values;
+  }
+}
+
+const PatDhatuParasmaiPada = [
+new Detail("लट् - Present tense", ["पठति", "पठतः", "पठन्ति", "पठसि", "पठथः", "पठथ", "पठामि", "पठावः", "पठामः"]),
+new Detail("लुङ् - Immediate Past", ["अपाठीत्/अपाठीद्/अपठीत्/अपठीद्", "अपाठिष्टाम्/अपठिष्टाम्", "अपाठिषुः/अपठिषुः", "अपाठीः/अपठीः", "अपाठिष्टम्/अपठिष्टम्", "अपाठिष्ट/अपठिष्ट", "अपाठिषम्/अपठिषम्", "अपाठिष्व/अपठिष्व", "अपाठिष्म/अपठिष्म"]),
+new Detail("लङ् - Past Tense", ["अपठत्/अपठद्", "अपठताम्", "अपठन्", "अपठः", "अपठतम्", "अपठत", "अपठम्", "अपठाव", "अपठाम"]),
+new Detail("लिट् - Long time back past Tense", ["पपाठ", "पेठतुः", "पेठुः", "पेठिथ", "पेठथुः", "पेठ", "पपठ/पपाठ", "पेठिव", "पेठिम"]),
+new Detail("लुट् - Immediate Future Tense", ["पठिता", "पठितारौ", "पठितारः", "पठितासि", "पठितास्थः", "पठितास्थ", "पठितास्मि", "पठितास्वः", "पठितास्मः"]),
+new Detail("लृट् - Future Tense", ["पठिष्यति", "पठिष्यतः", "पठिष्यन्ति", "पठिष्यसि", "पठिष्यथः", "पठिष्यथ", "पठिष्यामि", "पठिष्यावः", "पठिष्यामः"]),
+new Detail("लृङ् - Casual Statement about in complete action (past or future)", ["अपठिष्यत्/अपठिष्यद्", "अपठिष्यताम्", "अपठिष्यन्", "अपठिष्यः", "अपठिष्यतम्", "अपठिष्यत", "अपठिष्यम्", "अपठिष्याव", "अपठिष्याम"]),
+new Detail("लोट् - Command / Request", ["पठतात्/पठताद्/पठतु", "पठताम्", "पठन्तु", "पठतात्/पठताद्/पठ", "पठतम्", "पठत", "पठानि", "पठाव", "पठाम"]),
+new Detail("विधिलिङ् - Expectation / guess", ["पठेत्/पठेद्", "पठेताम्", "पठेयुः", "पठेः", "पठेतम्", "पठेत", "पठेयम्", "पठेव", "पठेम"]),
+new Detail("आशीर्लिङ् - Benediction / Blessings", ["पठ्यात्/पठ्याद्", "पठ्यास्ताम्", "पठ्यासुः", "पठ्याः", "पठ्यास्तम्", "पठ्यास्त", "पठ्यासम्", "पठ्यास्व", "पठ्यास्म"])
+];
+
+const headers = ["प्रथम पुरुषः, एकवचनम्", "प्रथम पुरुषः, द्विवचनम्", "प्रथम पुरुषः, बहुवचनम्", "मध्यम पुरुषः, एकवचनम्", "मध्यम पुरुषः, द्विवचनम्", "मध्यम पुरुषः, बहुवचनम्", "उत्तम पुरुषः, एकवचनम्", "उत्तम पुरुषः, द्विवचनम्", "उत्तम पुरुषः, बहुवचनम्"];
+
+var selected = "patKartariParasmaipada";
+
+function updateSelected(selectedOption) {
+    var selectedText = selectedOption.options[selectedOption.selectedIndex].innerHTML;
+    selected = selectedOption.value;
+}
+
+function getRandomItem() {
+
+    hide();
+    var index; var item; var lakara; var allValues; var question;
+    
+    switch(selected) {
+        case "patKartariParasmaipada":
+            item = PatDhatuParasmaiPada[Math.floor(Math.random()*PatDhatuParasmaiPada.length)];
+            lakara = item.lakara;
+            allValues = item.values;
+            index = Math.floor(Math.random()*allValues.length);
+            question = allValues[index];
+            break;
+        default:    
+            item = PatDhatuParasmaiPada[Math.floor(Math.random()*PatDhatuParasmaiPada.length)];
+            lakara = item.lakara;
+            allValues = item.values;
+            index = Math.floor(Math.random()*allValues.length);
+            question = allValues[index];
+            break;  
+    }              
+    document.getElementById("display").innerHTML = question;
+    var answer = "लकारः&nbsp;" + lakara + "&nbsp;&nbsp;" +  headers[index];
+    document.getElementById("answerSection").innerHTML = answer;
+}
+
+function showAndHide() {
+    var x = document.getElementById('answerSection');
+    x.style.display =  (x.style.display == 'none') ? x.style.display = 'block' : x.style.display = 'none';
+}
+
+function hide() {
+    var x = document.getElementById('answerSection');
+    x.style.display =  x.style.display = 'none';
+}
+
+</script>
+</head>
+<body>
+<label for="cars">Choose:</label>
+
+<select style="font-size:30px;"  onchange="updateSelected(this)" name="linga" id="linga">
+  <option value="patKartariParasmaipada">पठ् कर्तरि प्रयोगः परस्मै पदम्</option> 
+</select>
+<p style="font-size:50px;" id="display">Click on Print random button to start</p>
+<div style="font-size:50px;" id="answerSection" style="display:none">Answer</div>
+<button style="font-size:50px;" onclick="getRandomItem()">Print random</button>
+<button style="font-size:50px;" onclick="showAndHide()">Show/Hide the answer</button>
+</body>
+</html>

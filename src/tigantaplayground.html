@@ -1,8 +1,26 @@
 <html lang="sa">
 <head>
+<style>
+th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
    <title>Tiganta Page</title>
 <script>
+
+function fillTable(itemvalues) {
+    document.getElementById("pratamapurushaekavachana").innerHTML = itemvalues[0];
+    document.getElementById("pratamapurushadwivachana").innerHTML = itemvalues[1];
+    document.getElementById("pratamapurushabahuvachana").innerHTML = itemvalues[2];
+    document.getElementById("madhyamapurushaekavachana").innerHTML = itemvalues[3];
+    document.getElementById("madhyamapurushadwivachana").innerHTML = itemvalues[4];
+    document.getElementById("madhyamapurushabahuvachana").innerHTML = itemvalues[5];
+    document.getElementById("uttamapurushaekavachana").innerHTML = itemvalues[6];
+    document.getElementById("uttamapurushadwivachana").innerHTML = itemvalues[7];
+    document.getElementById("uttamapurushabahuvachana").innerHTML = itemvalues[8];
+}
 
 class Detail {
   constructor(lakara, values) {
@@ -144,6 +162,7 @@ function getRandomItem() {
     }         
     const lakara = item.lakara;
     const allValues = item.values;
+    fillTable(allValues);
     const index = Math.floor(Math.random()*allValues.length);
     const question = allValues[index];     
     document.getElementById("display").innerHTML = question;
@@ -154,11 +173,17 @@ function getRandomItem() {
 function showAndHide() {
     var x = document.getElementById('answerSection');
     x.style.display =  (x.style.display == 'none') ? x.style.display = 'block' : x.style.display = 'none';
+    
+    var y = document.getElementById('allValuesTable');
+    y.style.display =  (y.style.display == 'none') ? y.style.display = 'block' : y.style.display = 'none';
 }
 
 function hide() {
     var x = document.getElementById('answerSection');
     x.style.display =  x.style.display = 'none';
+    
+    var y = document.getElementById('allValuesTable');
+    y.style.display =  y.style.display = 'none';
 }
 
 </script>
@@ -167,17 +192,48 @@ function hide() {
 <label for="cars">Choose:</label>
 
 <select style="font-size:30px;"  onchange="updateSelected(this)" name="linga" id="linga">
-  <option value="patKartariParasmaipada">पठ् कर्तरि प्रयोगः परस्मै पदम्</option> 
-  <option value="patKarmaniAtmanipada">पठ् कर्मणि प्रयोगः आत्मने पदम्</option> 
-  <option value="vandKartariAtmanipada">वन्द् कर्तरि प्रयोगः आत्मने पदम्</option> 
-  <option value="vandKarmaniAtmanipada">वन्द् कर्मणि प्रयोगः आत्मने पदम्</option>   
-  <option value="pachKartariParasmaipada">पच् कर्तरि प्रयोगः परस्मै पदम्</option>   
-  <option value="pachKartariAtmanipada">पच् कर्तरि प्रयोगः आत्मने पदम्</option>   
-  <option value="pachKarmaniAtmanipada">पच् कर्मणि प्रयोगः आत्मने पदम्</option>  
+  <optgroup label="भ्वादिः">
+    <option value="patKartariParasmaipada">पठ् कर्तरि प्रयोगः परस्मै पदम्</option> 
+    <option value="patKarmaniAtmanipada">पठ् कर्मणि प्रयोगः आत्मने पदम्</option> 
+    <option value="vandKartariAtmanipada">वन्द् कर्तरि प्रयोगः आत्मने पदम्</option> 
+    <option value="vandKarmaniAtmanipada">वन्द् कर्मणि प्रयोगः आत्मने पदम्</option>   
+    <option value="pachKartariParasmaipada">पच् कर्तरि प्रयोगः परस्मै पदम्</option>   
+    <option value="pachKartariAtmanipada">पच् कर्तरि प्रयोगः आत्मने पदम्</option>   
+    <option value="pachKarmaniAtmanipada">पच् कर्मणि प्रयोगः आत्मने पदम्</option>  
+  </optgroup>
 </select>
 <p style="font-size:50px;" id="display">Click on Print random button to start</p>
 <div style="font-size:50px;" id="answerSection" style="display:none">Answer</div>
 <button style="font-size:50px;" onclick="getRandomItem()">Print random</button>
 <button style="font-size:50px;" onclick="showAndHide()">Show/Hide the answer</button>
+<br>
+<br>
+<br>
+<table id = "allValuesTable" style="font-size:30px;">
+  <tr>
+    <th></th>
+    <th>एकवचनम्</th>
+    <th>द्विवचनम्</th>
+    <th>बहुवचनम्</th>
+  </tr>
+  <tr>
+    <td>प्रथम पुरुषः</td>
+    <td id="pratamapurushaekavachana"></td>
+    <td id="pratamapurushadwivachana"></td>
+    <td id="pratamapurushabahuvachana"></td>
+  </tr>
+  <tr>
+    <td>मध्यम पुरुषः</td>
+    <td id="madhyamapurushaekavachana"></td>
+    <td id="madhyamapurushadwivachana"></td>
+    <td id="madhyamapurushabahuvachana"></td>
+  </tr>
+  <tr>
+    <td>उत्तम पुरुषः</td>
+    <td id="uttamapurushaekavachana"></td>
+    <td id="uttamapurushadwivachana"></td>
+    <td id="uttamapurushabahuvachana"></td>
+  </tr>
+</table>
 </body>
 </html>
